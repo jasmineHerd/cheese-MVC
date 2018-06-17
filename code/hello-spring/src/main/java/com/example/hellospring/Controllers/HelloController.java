@@ -16,6 +16,9 @@ public class HelloController {
     public String index(HttpServletRequest request){
 
         String name = request.getParameter("name");
+        if(name == null){
+            name = "World";
+        }
         return "Hello " + name;
     }
     @RequestMapping(value = "goodbye")
