@@ -39,26 +39,6 @@ public class HelloController {
         return html;
     }
 
-    @RequestMapping(value = "hello", method = RequestMethod.POST)
-    @ResponseBody
-    public String helloPost(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        return "Hello " + name;
-    }
-
-
-    @RequestMapping(value = "hello/{name}")
-    @ResponseBody
-    public String helloURLSegment(@PathVariable String name) {
-        return "Hello " + name;
-
-    }
-
-    @RequestMapping(value = "goodbye")
-    public String goodbye() {
-
-        return "redirect:/";
-    }
 
     @RequestMapping(value = "hello", method = RequestMethod.POST)
     @ResponseBody
@@ -73,8 +53,24 @@ public class HelloController {
             case "english":
                 return "Hello " + name;
             default:
-                return "choose language please, " + name;
+                return "choose language please, " + name + "!";
         }
+
     }
+
+    @RequestMapping(value = "hello/{name}")
+    @ResponseBody
+    public String helloURLSegment(@PathVariable String name) {
+        return "Hello " + name;
+
+    }
+
+    @RequestMapping(value = "goodbye")
+    public String goodbye() {
+
+        return "redirect:/";
+    }
+
+
 }
 
