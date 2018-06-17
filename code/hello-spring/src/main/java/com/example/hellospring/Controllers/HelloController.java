@@ -11,10 +11,10 @@ public class HelloController {
 
     @RequestMapping(value = "")
     @ResponseBody
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request) {
 
         String name = request.getParameter("name");
-        if(name == null){
+        if (name == null) {
             name = "World";
         }
         return "Hello " + name;
@@ -22,16 +22,26 @@ public class HelloController {
 
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     @ResponseBody
-    public String helloForm(){
-        String html = "<form method='post'>" +
-                "<input type='text' name='name' />" +
-                "<input type='submit' value='Greet Me!'/>" +
-                "</form>";
+    public String helloForm() {
+        String a = "Please enter name and language";
+
+        String html =
+                "<form method='post'>" +
+                        "<input type='text' name='name' />" +
+                        "<select name = 'language'>" +
+                        "<option value = 'english'>English</option>" +
+                        "<option value = 'spanish'>Spanish</option>" +
+                        "<option value = 'french'>French</option>" +
+                        "</select>" +
+                        "<input type='submit' value='Greet Me!'/>" +
+                        "</form>";
+
         return html;
     }
+
     @RequestMapping(value = "hello", method = RequestMethod.POST)
     @ResponseBody
-    public String helloPost(HttpServletRequest request){
+    public String helloPost(HttpServletRequest request) {
         String name = request.getParameter("name");
         return "Hello " + name;
     }
@@ -39,16 +49,32 @@ public class HelloController {
 
     @RequestMapping(value = "hello/{name}")
     @ResponseBody
-    public String helloURLSegment(@PathVariable String name){
+    public String helloURLSegment(@PathVariable String name) {
         return "Hello " + name;
 
     }
 
     @RequestMapping(value = "goodbye")
-    public String goodbye(){
+    public String goodbye() {
 
         return "redirect:/";
     }
-}
 
+    @RequestMapping(value = "hello", method = RequestMethod.POST)
+    @ResponseBody
+    public String createMessage(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        String language = request.getParameter("language");
+        switch (language) {
+            case "spanish":
+                return "Hola " + name;
+            case "french":
+                return "Bonjour " + name;
+            case "english":
+                return "Hello " + name;
+            default:
+                return "choose language please, " + name;
+        }
+    }
+}
 
