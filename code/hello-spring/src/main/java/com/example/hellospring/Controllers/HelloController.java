@@ -28,8 +28,8 @@ public class HelloController {
     public String helloform(){
 
         String html = "<form method= 'post'> " +
-                "<input type = 'text' name = ' name />" +
-                "<input tu[e = 'submit' value='Greet Me!" +
+                "<input type = 'text' name = 'name'/>" +
+                "<input type = 'submit' value='Greet Me!'" +
                 "</form>";
         return html;
     }
