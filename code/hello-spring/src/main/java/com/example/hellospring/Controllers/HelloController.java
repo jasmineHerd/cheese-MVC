@@ -23,22 +23,22 @@ public class HelloController {
         return "Hello " + name;
     }
 
-    @RequestMapping(value = "hello",method = RequestMethod.GET)
+    @RequestMapping(value = "hello", method = RequestMethod.GET)
     @ResponseBody
-    public String helloform(){
-
-        String html = "<form method= 'post'> " +
-                "<input type = 'text' name = 'name'/>" +
-                "<input type = 'submit' value='Greet Me!'" +
+    public String helloForm(){
+        String html = "<form method='post'>" +
+                "<input type='text' name='name' />" +
+                "<input type='submit' value='Greet Me!'/>" +
                 "</form>";
         return html;
     }
-    @RequestMapping(value = "hello",method = RequestMethod.POST)
+    @RequestMapping(value = "hello", method = RequestMethod.POST)
     @ResponseBody
     public String helloPost(HttpServletRequest request){
         String name = request.getParameter("name");
-        return "Hello "+ name;
+        return "Hello " + name;
     }
+
     @RequestMapping(value = "goodbye")
     @ResponseBody
     public String goodbye(){
