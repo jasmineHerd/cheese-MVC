@@ -16,7 +16,7 @@ public class HelloController {
     public String index(HttpServletRequest request){
 
         String name = request.getParameter("name");
-        return "Hello" + name;
+        return "Hello " + name;
     }
     @RequestMapping(value = "goodbye")
     @ResponseBody
